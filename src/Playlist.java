@@ -1,10 +1,9 @@
-
 import java.util.ArrayList;
 
 public class Playlist {
 
     private String name;
-    private ArrayList<Song> songs; // A playlist contains multiple songs (Aggregation)
+    private ArrayList<Song> songs;
 
     public Playlist(String name) {
         this.name = name;
@@ -13,15 +12,19 @@ public class Playlist {
 
     public void addSong(Song song) {
         songs.add(song);
-        System.out.println("Added: " + song.getTitle() + " by " + song.getArtist());
     }
 
-    public void displayPlaylist() {
-        System.out.println("Playlist: " + name);
-        System.out.println("------------------");
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
+    public String getPlaylistDetails() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Playlist: ").append(name).append("\n");
+        sb.append("------------------\n");
         for (Song song : songs) {
-            song.displayDetails();
-            System.out.println();
+            sb.append(song.getSongDetails()).append("\n");
         }
+        return sb.toString();
     }
 }
