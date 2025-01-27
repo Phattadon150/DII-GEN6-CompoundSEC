@@ -1,17 +1,42 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        Playlist myPlaylist = new Playlist("My Favorites");
+        Scanner scanner = new Scanner(System.in);
 
-        Song song1 = new Song("Shape of You", "Ed Sheeran", 4.24);
-        Song song2 = new Song("Blinding Lights", "The Weeknd", 3.50);
-        Song song3 = new Song("Someone Like You", "Adele", 4.45);
+        // Create a feedback processor
+        FeedbackProcessor processor = new SimpleFeedbackProcessor();
 
-        myPlaylist.addSong(song1);
-        myPlaylist.addSong(song2);
-        myPlaylist.addSong(song3);
+        // Create a MusicTherapy session using the processor
+        MusicTherapy therapy = new MusicTherapy(processor);
 
-        // Pass the 'myPlaylist' to PlaylistGUI constructor
-        PlaylistGUI playlistGUI = new PlaylistGUI(myPlaylist);
-        playlistGUI.updatePlaylistDisplay();
+        System.out.println("Welcome to the Migraine Music Therapy Program!");
+
+        // Collect feedback from the user
+        System.out.print("Enter your feeling rating (1-5): ");
+        int feelingRating = scanner.nextInt();
+
+        System.out.print("Enter your headache severity (1-5): ");
+        int headacheRating = scanner.nextInt();
+
+        System.out.print("Enter your smell sensitivity (1-5): ");
+        int smellSensitivity = scanner.nextInt();
+
+        System.out.print("Enter your light sensitivity (1-5): ");
+        int lightSensitivity = scanner.nextInt();
+
+        scanner.nextLine(); // Consume the leftover newline
+
+        System.out.print("Do you prefer hot or cool temperature? ");
+        String temperaturePreference = scanner.nextLine();
+
+        // Add feedback to the therapy session
+        Feedback feedback = new Feedback(feelingRating, headacheRating, smellSensitivity, lightSensitivity, temperaturePreference);
+        therapy.addFeedback(feedback);
+
+        // Display feedback summary
+        therapy.summarizeFeedback();
+
+        scanner.close();
     }
 }
