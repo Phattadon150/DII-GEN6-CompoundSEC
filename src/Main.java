@@ -25,7 +25,7 @@ public class Main {
         System.out.print("Enter your light sensitivity (1-5): ");
         int lightSensitivity = scanner.nextInt();
 
-        scanner.nextLine(); // Consume the leftover newline
+        scanner.nextLine();
 
         System.out.print("Do you prefer hot or cool temperature? ");
         String temperaturePreference = scanner.nextLine();
