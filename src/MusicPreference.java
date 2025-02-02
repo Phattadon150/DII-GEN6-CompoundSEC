@@ -1,10 +1,14 @@
 public class MusicPreference {
     private String genre;
     private String favoriteTrack;
+    private String mood;
+    private String preferredInstrument;
 
-    public MusicPreference(String genre, String favoriteTrack) {
+    public MusicPreference(String genre, String favoriteTrack, String mood, String preferredInstrument) {
         this.genre = genre;
         this.favoriteTrack = favoriteTrack;
+        this.mood = mood;
+        this.preferredInstrument = preferredInstrument;
     }
 
     public String getGenre() {
@@ -15,8 +19,16 @@ public class MusicPreference {
         return favoriteTrack;
     }
 
+    public String getMood() {
+        return mood;
+    }
+
+    public String getPreferredInstrument() {
+        return preferredInstrument;
+    }
+
     @Override
     public String toString() {
-        return "Genre: " + genre + ", Favorite Track: " + favoriteTrack;
+        return "Genre: " + genre + ", Favorite Track: " + favoriteTrack + ", Mood: " + mood + ", Preferred Instrument: " + preferredInstrument;
     }
 }
