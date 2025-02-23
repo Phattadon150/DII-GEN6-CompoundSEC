@@ -9,13 +9,11 @@ class Doctor extends Security {
 
     @Override
     public boolean authenticate(String credential) {
-        // Simple authentication logic (e.g., check doctor ID)
         return credential.equals(doctorID);
     }
 
     @Override
     public boolean authorize(String action) {
-        // Check if the action is authorized for the doctor (e.g., prescribing treatment)
-        return action.equals("PRESCRIBE_TREATMENT");
+        return action.equals("สั่งจ่ายยา");
     }
 }

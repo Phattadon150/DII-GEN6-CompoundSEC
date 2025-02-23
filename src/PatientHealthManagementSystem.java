@@ -1,25 +1,20 @@
 public class PatientHealthManagementSystem {
     public static void main(String[] args) {
-        // Create a Patient instance
-        Patient patient = new Patient("John Doe", 30, "Hypertension");
+        // ✅ สร้างอ็อบเจ็กต์ผู้ป่วยและแพทย์
+        Patient patient = new Patient("สมชาย ใจดีไหม", 45, "ความดันโลหิตสูง");
+        Doctor doctor = new Doctor("D123", "อายุรแพทย์");
 
-        // Create a Doctor instance with ID and role
-        Doctor doctor = new Doctor("D123", "Physician");
-
-        // Upcasting: treating the Patient as a Treatment and Prescription interface
+        // ✅ ใช้ Upcasting
         Treatment treatment = patient;
         Prescription prescription = patient;
 
-        // Doctor performs an action (authentication and authorization check)
-        doctor.performDoctorAction("D123", "PRESCRIBE_TREATMENT");
-
-        // Doctor prescribes treatment and medication
-        treatment.prescribeTreatment("Blood Pressure Medication");
-        prescription.givePrescription("Lisinopril");
-
-        // Check the instance type using 'instanceof' (e.g., check if patient is an instance of Patient)
-        if (patient instanceof Patient) {
-            System.out.println(patient.getName() + " is a patient.");
+        // ✅ ใช้ Polymorphism กับตรวจสอบสิทธิ์
+        if (doctor.performSecurityCheck("D123", "สั่งจ่ายยา")) {
+            treatment.prescribeTreatment("ลดความดันโลหิต");
+            prescription.givePrescription("ลิซิโนพริล (Lisinopril)");
         }
+
+        // ✅ ใช้ Encapsulation แสดงข้อมูลผู้ป่วย
+        System.out.println(patient.getName() + " เป็นผู้ป่วยที่มีประวัติ: " + patient.getMedicalHistory());
     }
 }
