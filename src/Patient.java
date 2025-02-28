@@ -19,7 +19,6 @@ class Patient implements Treatment, Prescription {
         System.out.println(name + " ได้รับยา: " + medication);
     }
 
-    // Encapsulation: ใช้ Getter
     public String getName() {
         return name;
     }
