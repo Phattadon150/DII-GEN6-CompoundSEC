@@ -10,11 +10,4 @@ public class CardManager {
     public DoctorCard getCard(String doctorID) {
         return cardDatabase.get(doctorID);
     }
-
-    public void deactivateCard(String doctorID) {
-        DoctorCard card = cardDatabase.get(doctorID);
-        if (card != null) {
-            card.deactivate();
-        }
-    }
 }

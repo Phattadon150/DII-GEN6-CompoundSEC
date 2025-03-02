@@ -1,33 +1,30 @@
-class Patient implements Treatment, Prescription {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Patient {
+    private String id;
     private String name;
-    private int age;
-    private String medicalHistory;
+    private List<String> history;
 
-    public Patient(String name, int age, String medicalHistory) {
+    public Patient(String id, String name) {
+        this.id = id;
         this.name = name;
-        this.age = age;
-        this.medicalHistory = medicalHistory;
+        this.history = new ArrayList<>();
     }
 
-    @Override
-    public void prescribeTreatment(String treatment) {
-        System.out.println(name + " ได้รับการรักษา: " + treatment);
+    public void addHistory(String record) {
+        history.add(record);
     }
 
-    @Override
-    public void givePrescription(String medication) {
-        System.out.println(name + " ได้รับยา: " + medication);
+    public List<String> getHistory() {
+        return history;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public String getMedicalHistory() {
-        return medicalHistory;
+    public String getId() {
+        return id;
     }
 }
